@@ -18,7 +18,8 @@ data.in <- read.csv(options[1])
 # melt with defaults
 data.in.melted <- melt(data.in)
  
-out.plot <- ggplot(data.in.melted,(aes(x=PatientID, y=value))) +
+#create a plot with ggplot
+ out.plot <- ggplot(data.in.melted,(aes(x=PatientID, y=value))) +
 geom_point() +
 stat_sum() +
 theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
