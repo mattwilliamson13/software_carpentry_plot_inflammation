@@ -1,0 +1,37 @@
+#Class Exercise Using R Markdown
+========================================================
+###**Load the data**
+First, load the necessary packages:
+```{r}
+require(ggplot2)
+require(reshape2)
+```
+Then load the data from gapminder.
+```{r}
+gapminder <- as.data.frame(read.delim("gapminderDataFiveYear.txt"))
+```
+
+Then, evaluate the structure of _gapminder_
+```{r}
+str(gapminder)
+```
+Determine which countries are available for selection
+```{r}
+head(gapminder$country)
+
+```
+Select 3 countries: **Afghanistan, Australia, India***
+```{r}
+data <- subset(gapminder, country %in% c("Afghanistan", "Australia", "India"))
+```
+Output the plots
+```{r}
+ggplot(data, aes(year, gdpPercap, color = country))+
+  geom_point()+
+  facet_wrap(~ country)
+```
+Key Points (Based on the plots):
+* Afghanistan has seen a fairly flat trend for GDP and has a considerably lower GDP than the other countries.  
+* Australia is considerably more wealthy than the other countries (as evidenced by GDP) and has seen an almost exponential increase during the period of record.  
+* India has considerably lower GDP, but appears to be entering a period of substantial increase.
+
