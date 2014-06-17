@@ -10,6 +10,7 @@ require(ggplot2)
 require(reshape2)
  
 # Takes one command line argument as input data set
+#added comment to test RStudio
 options <- commandArgs(trailingOnly = TRUE)
  
 # load that csv from command line arg
