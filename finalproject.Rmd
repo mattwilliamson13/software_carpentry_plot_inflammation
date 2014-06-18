@@ -16,7 +16,7 @@ Then, evaluate the structure of _gapminder_
 str(gapminder)
 ```
 Determine which countries are available for selection
-```{r}
+```{r, echo=FALSE}
 head(gapminder$country)
 
 ```
@@ -35,3 +35,25 @@ Key Points (Based on the plots):
 * Australia is considerably more wealthy than the other countries (as evidenced by GDP) and has seen an almost exponential increase during the period of record.  
 * India has considerably lower GDP, but appears to be entering a period of substantial increase.
 
+###Calculating life expectancy
+First, aggregate the data.
+```{r}
+meanLE <- aggregate(lifeExp ~ country, data, FUN=mean)
+maxLE <- aggregate(lifeExp ~ country, data, FUN=max)
+minLE  <-  aggregate(lifeExp ~ country, data, FUN=min)
+```
+Now build histograms of max, min, and mean Life Expectancy
+```{r}
+ggplot(meanLE, aes(country, lifeExp), fill=country)+
+  geom_bar(stat="identity", position = "dodge")
+```
+Mean life expectancy is much higher in Australia (much like GDP)
+```{r}
+ggplot(maxLE, aes(country, lifeExp), fill=country)+
+  geom_bar(stat="identity", position = "dodge")
+```
+```{r}
+ggplot(minLE, aes(country, lifeExp), fill=country)+
+  geom_bar(stat="identity", position = "dodge")
+```  
+**Mean, max, and minimum** life expectancy is much higher in Australia (much like GDP)
